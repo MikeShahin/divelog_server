@@ -1,3 +1,4 @@
+# require 'pry'
 class SessionsController < ApplicationController
     def create
       @user = User.find_by(email: params[:user][:email])
@@ -18,6 +19,7 @@ class SessionsController < ApplicationController
     end
   
     def get_current_user
+      # binding.pry
       if logged_in?
         render json: {
             user: current_user.user_serializer

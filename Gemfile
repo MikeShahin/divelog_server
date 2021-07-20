@@ -19,7 +19,7 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'dotenv-rails'
-
+gem 'pry'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
