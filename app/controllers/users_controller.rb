@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy]
   
@@ -7,7 +8,13 @@ class UsersController < ApplicationController
     end
   
     def show
-      render json: @user
+      @user = User.find_by(id: params[:id])
+      if @user
+        # binding.pry
+          render json: @user.dives
+      else 
+          render json: {error: "User doesn't exist"}
+      end
     end
   
     def create
@@ -30,19 +37,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username, :email, :password)
       end
 
-    # def create
-    #   @user = User.create(user_params)
-    #   if @user.valid?
-    #     @token = encode_token(user_id: @user.id)
-    #     render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
-    #   else
-    #     render json: { error: 'failed to create user' }, status: :not_acceptable
-    #   end
-    # end
-  
-    # private
-  
-    # def user_params
-    #   params.require(:user).permit(:username, :email, :password)
-    # end
   end
