@@ -1,5 +1,3 @@
-# require 'pry'
-require 'pry'
 class SessionsController < ApplicationController
 
   
@@ -23,7 +21,6 @@ class SessionsController < ApplicationController
     end
   
     def get_current_user
-      # binding.pry
       if logged_in?
         render json: {
             user: user_serializer(current_user)
